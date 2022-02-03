@@ -62,6 +62,15 @@ const Multyplayer = () => {
 
   return (
     <>
+      {isPlaying ? (
+        <h1 className="text-center mt-4 text-2xl text-blue-600 animate-pulse">
+          Wainting for move by player representing X
+        </h1>
+      ) : (
+        <h1 className="text-center mt-4 text-2xl text-secondary animate-pulse">
+          Wainting for move by player representing O
+        </h1>
+      )}
       <Board>
         {allSquares.map((square, i) => (
           <Square
@@ -80,7 +89,7 @@ const Multyplayer = () => {
           RESET
         </button>
         {!!winner && winner === "x" && (
-          <div className="winner bg-secondary">Player with X WON!</div>
+          <div className="winner bg-blue-600">Player with X WON!</div>
         )}
         {!!winner && winner === "o" && (
           <div className="winner bg-secondary">Player with O WON!</div>
