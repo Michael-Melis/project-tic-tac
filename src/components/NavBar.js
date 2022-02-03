@@ -9,7 +9,7 @@ const NavBar = ({ toggle }) => {
     >
       <Link
         to="/"
-        className="pl-8 font-extrabold tracking-widest animate-pulse hover:underline transition-all duration-300 ease-in-out text-secondary "
+        className="pl-8 font-extrabold tracking-widest  hover:underline transition-all duration-300 ease-in-out text-secondary "
       >
         Michael Melis
       </Link>
