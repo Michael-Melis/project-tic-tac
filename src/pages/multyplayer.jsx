@@ -81,6 +81,7 @@ const Multyplayer = () => {
             onClick={() => handleClickByPlayer(i)}
             x={square === "x" ? 1 : 0}
             o={square === "o" ? 1 : 0}
+            isPlaying={isPlaying}
           />
         ))}
       </Board>

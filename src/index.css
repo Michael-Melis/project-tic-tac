@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .winner {
-  @apply px-16 py-4 text-2xl text-navbar font-mono rounded-lg mt-8 animate-bounce;
+  @apply px-16 py-4 text-2xl text-navbar font-mono rounded-lg mt-8 animate-bounce mb-16;
 }
