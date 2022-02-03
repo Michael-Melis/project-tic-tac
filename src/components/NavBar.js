@@ -34,10 +34,10 @@ const NavBar = ({ toggle }) => {
           Main Menu
         </Link>
         <Link className="p-4 hover:text-secondary" to="/singleplayer">
-          Single player
+          Singleplayer
         </Link>
         <Link className="p-4 hover:text-secondary" to="/multyplayer">
-          Multy player
+          Multyplayer
         </Link>
       </div>
     </nav>
