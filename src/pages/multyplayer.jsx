@@ -63,11 +63,14 @@ const Multyplayer = () => {
   return (
     <>
       {isPlaying ? (
-        <h1 className="text-center mt-4 text-2xl text-blue-600 animate-pulse">
+        <h1 className="text-center pt-28 md:pt-20 text-2xl text-blue-600 animate-pulse">
           Wainting for move by player representing X
         </h1>
       ) : (
-        <h1 className="text-center mt-4 text-2xl text-secondary animate-pulse">
+        <h1
+          className="text-center pt-28 md:pt-
+        20 text-2xl text-secondary animate-pulse"
+        >
           Wainting for move by player representing O
         </h1>
       )}

@@ -37,7 +37,7 @@ const NavBar = ({ toggle }) => {
           Singleplayer
         </Link>
         <Link className="p-4 hover:text-secondary" to="/multyplayer">
-          Multyplayer
+          Multy player
         </Link>
       </div>
     </nav>

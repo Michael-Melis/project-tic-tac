@@ -13,7 +13,7 @@ const App = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="bg-primary h-screen ">
+    <div className="bg-primary h-screen font-mono">
       <NavBar toggle={toggle} />
       <DropDown toggle={toggle} isOpen={isOpen} />
 
