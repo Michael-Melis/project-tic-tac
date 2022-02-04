@@ -2,38 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-.winner {
-  @apply px-16 py-4 text-2xl text-navbar font-mono rounded-lg mt-8 animate-bounce mb-16;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+body {
+  background: #2a2731;
+}
+/*************
+multy/singleplayer
+*************/
 .player-msg {
-  @apply text-center pt-28 md:pt-20 text-2xl;
-}
-.reset-btn {
-  @apply border-2 px-10 py-1 rounded border-secondary text-white font-mono hover:border-navbar hover:text-secondary animate-pulse;
+  @apply text-center pt-4 text-xl mx-4 md:text-3xl md:mt-10;
 }
 .winner-layout {
-  @apply flex flex-col items-center my-10;
+  @apply flex flex-col items-center my-4;
 }
+.reset-btn {
+  @apply border-2 px-10 py-1 rounded border-secondary text-white font-mono hover:border-navbar hover:text-secondary animate-pulse  md:text-3xl;
+}
+.winner {
+  @apply px-16 py-2 mt-8 text-base text-navbar rounded-lg  animate-bounce  md:text-3xl;
+}
+
+/*************
+Landing Page
+*************/
 .landing-container {
-  @apply flex flex-col items-center  text-center font-mono text-white mx-4  justify-center;
+  @apply flex flex-col items-center  text-center font-mono text-white mx-4  my-1;
 }
 .choose-game-container {
-  @apply flex flex-row justify-center  w-3/4 flex-wrap mt-16 md:text-2xl lg:text-3xl;
+  @apply flex flex-col justify-center  w-3/4  mt-2 md:text-2xl lg:text-3xl lg:flex-row xl:text-5xl xl:mt-40;
 }
 .selected-game {
   @apply hover:animate-pulse cursor-pointer;
 }
 
 .h1 {
-  @apply mt-16 text-4xl md:text-5xl lg:text-6xl;
+  @apply text-3xl md:text-5xl lg:text-6xl lg:mt-10 xl:text-8xl;
 }
 .h2 {
-  @apply text-2xl  md:text-3xl lg:text-4xl text-secondary my-4;
+  @apply text-2xl  md:text-3xl lg:text-4xl text-secondary my-4 xl:text-6xl;
 }
 
 .link-to-game {
-  @apply flex flex-col items-center;
+  @apply flex flex-col lg:mt-10 xl:text-5xl xl:mx-10  border-secondary rounded-xl p-4 hover:bg-secondary;
 }
 .game-img {
-  @apply object-contain h-28 w-auto mt-4 md:h-32  lg:h-48 xl:h-72 xl:w-auto;
+  @apply object-contain h-28 w-auto my-1 md:h-32 lg:mt-4 lg:h-48 xl:h-72 xl:w-auto xl:mt-40;
+}
+/*************
+Footer
+*************/
+
+.footer-container {
+  @apply flex flex-col my-1  bg-navbar text-white  items-center justify-center   fixed bottom-0  w-full;
+}
+.icons-container {
+  @apply my-1;
+}
+.icons {
+  @apply text-xl mx-8 my-2 md:text-3xl hover:animate-bounce hover:text-secondary transition-all duration-300 ease-in-out;
 }

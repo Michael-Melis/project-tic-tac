@@ -3,7 +3,7 @@ import React from "react";
 const Square = (props) => {
   return (
     <div
-      className=" w-24 h-24 border-solid border-4 border-white text-center text-5xl items-center hover:animate-pulse hover:border-secondary transition-all duration-300 ease-in-out"
+      className=" flex items-center justify-center w-24 h-24 border-solid border-4 border-white text-6xl hover:border-secondary transition-all duration-300 ease-in-out"
       {...props}
     >
       {props.x ? (

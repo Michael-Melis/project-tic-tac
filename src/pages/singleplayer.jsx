@@ -24,75 +24,78 @@ const Singleplayer = () => {
     const emptyBoxes = allSquares
       .map((square, i) => (square === null ? i : null))
       .filter((val) => val !== null);
-    if (emptyBoxes.length > 0) {
+    setTimeout(() => {
       if (emptyBoxes.length > 0) {
-        const exactLines = (a, b, c) => {
-          return winningLines.filter((boxIndexes) => {
-            const boxValues = boxIndexes.map((index) => allSquares[index]);
-            return (
-              JSON.stringify([a, b, c].sort()) ===
-              JSON.stringify(boxValues.sort())
-            );
-          });
-        };
+        if (emptyBoxes.length > 0) {
+          const exactLines = (a, b, c) => {
+            return winningLines.filter((boxIndexes) => {
+              const boxValues = boxIndexes.map((index) => allSquares[index]);
+              return (
+                JSON.stringify([a, b, c].sort()) ===
+                JSON.stringify(boxValues.sort())
+              );
+            });
+          };
 
-        const aiMove = (index) => {
-          let newAllSquares = allSquares;
-          newAllSquares[index] = "o";
-          setAllSquares([...newAllSquares]);
-        };
+          const aiMove = (index) => {
+            let newAllSquares = allSquares;
+            newAllSquares[index] = "o";
+            setAllSquares([...newAllSquares]);
+          };
 
-        const personWon = exactLines("x", "x", "x").length > 0;
-        if (personWon) {
-          setWinner("x");
-          console.log(winner);
-        }
-        const aiWon = exactLines("o", "o", "o").length > 0;
-        if (aiWon) {
-          setWinner("o");
-          console.log(winner);
-        }
-        //AI moves
-        const isAiTurn =
-          allSquares.filter((square) => square !== null).length % 2 === 1;
+          const personWon = exactLines("x", "x", "x").length > 0;
+          if (personWon) {
+            setWinner("x");
 
-        if (isAiTurn) {
-          const aiWinningBox = exactLines("o", "o", null);
-          //AI winning box
-          if (aiWinningBox.length > 0) {
-            const winningBlock = aiWinningBox[0].filter(
-              (index) => allSquares[index] === null
-            )[0];
-            aiMove(winningBlock);
-            return;
+            console.log(winner);
           }
-
-          //blocking person to win
-          const aiBlock = exactLines("x", "x", null);
-          if (aiBlock.length > 0) {
-            const blockBox = aiBlock[0].filter(
-              (index) => allSquares[index] === null
-            )[0];
-            aiMove(blockBox);
-            return;
+          const aiWon = exactLines("o", "o", "o").length > 0;
+          if (aiWon) {
+            setWinner("o");
+            console.log(winner);
           }
-          //making next move smarter-closer to hit the winnin line
-          const nextAiMove = exactLines("o", null, null);
-          if (nextAiMove.length > 0) {
-            aiMove(
-              nextAiMove[0].filter((index) => allSquares[index] === null)[0]
-            );
-            return;
-          }
+          //AI moves
+          const isAiTurn =
+            allSquares.filter((square) => square !== null).length % 2 === 1;
 
-          const randomIndex =
-            emptyBoxes[Math.ceil(Math.random() * emptyBoxes.length)];
-          aiMove(randomIndex);
+          if (isAiTurn) {
+            const aiWinningBox = exactLines("o", "o", null);
+            //AI winning box
+            if (aiWinningBox.length > 0) {
+              const winningBlock = aiWinningBox[0].filter(
+                (index) => allSquares[index] === null
+              )[0];
+              aiMove(winningBlock);
+              return;
+            }
+
+            //blocking person to win
+            const aiBlock = exactLines("x", "x", null);
+            if (aiBlock.length > 0) {
+              const blockBox = aiBlock[0].filter(
+                (index) => allSquares[index] === null
+              )[0];
+              aiMove(blockBox);
+              return;
+            }
+            //making next move smarter-closer to hit the winnin line
+            const nextAiMove = exactLines("o", null, null);
+            if (nextAiMove.length > 0) {
+              aiMove(
+                nextAiMove[0].filter((index) => allSquares[index] === null)[0]
+              );
+              return;
+            }
+
+            const randomIndex =
+              emptyBoxes[Math.ceil(Math.random() * emptyBoxes.length)];
+            aiMove(randomIndex);
+          }
         }
+      } else {
+        setWinner("tie");
       }
-    } else {
-      setWinner("tie");
-    }
+    }, 300);
   }, [allSquares]);
 
   //player moves
