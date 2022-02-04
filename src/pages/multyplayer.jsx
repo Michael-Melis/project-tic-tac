@@ -63,14 +63,11 @@ const Multyplayer = () => {
   return (
     <>
       {isPlaying ? (
-        <h1 className="text-center pt-28 md:pt-20 text-2xl text-blue-600 animate-pulse">
+        <h1 className="player-msg text-blue-600">
           Wainting for move by player representing X
         </h1>
       ) : (
-        <h1
-          className="text-center pt-28 md:pt-
-        20 text-2xl text-secondary animate-pulse"
-        >
+        <h1 className="player-msg text-secondary">
           Wainting for move by player representing O
         </h1>
       )}
@@ -85,11 +82,8 @@ const Multyplayer = () => {
           />
         ))}
       </Board>
-      <div className="flex flex-col items-center my-10">
-        <button
-          className="border-2 px-10 py-1 rounded border-secondary text-white font-mono hover:border-navbar hover:text-secondary hover:animate-pulse"
-          onClick={handleResetBoard}
-        >
+      <div className="winner-layout">
+        <button className="reset-btn" onClick={handleResetBoard}>
           RESET
         </button>
         {!!winner && winner === "x" && (

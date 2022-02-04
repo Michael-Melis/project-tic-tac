@@ -113,7 +113,7 @@ const Singleplayer = () => {
 
   return (
     <>
-      <h1 className="text-center mt-4 text-2xl text-secondary animate-pulse">
+      <h1 className="player-msg text-secondary">
         Start by choosing empty box, you will represent X{" "}
       </h1>
       <Board>
@@ -126,11 +126,8 @@ const Singleplayer = () => {
           />
         ))}
       </Board>
-      <div className="flex flex-col items-center my-10">
-        <button
-          className="border-2 px-10 py-1 rounded border-secondary text-white font-mono hover:border-navbar hover:text-secondary hover:animate-pulse"
-          onClick={handleResetBoard}
-        >
+      <div className="winner-layout">
+        <button className="reset-btn" onClick={handleResetBoard}>
           RESET
         </button>
         {!!winner && winner === "x" && (

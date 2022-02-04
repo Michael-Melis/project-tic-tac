@@ -5,3 +5,35 @@
 .winner {
   @apply px-16 py-4 text-2xl text-navbar font-mono rounded-lg mt-8 animate-bounce mb-16;
 }
+.player-msg {
+  @apply text-center pt-28 md:pt-20 text-2xl;
+}
+.reset-btn {
+  @apply border-2 px-10 py-1 rounded border-secondary text-white font-mono hover:border-navbar hover:text-secondary animate-pulse;
+}
+.winner-layout {
+  @apply flex flex-col items-center my-10;
+}
+.landing-container {
+  @apply flex flex-col items-center  text-center font-mono text-white mx-4  justify-center;
+}
+.choose-game-container {
+  @apply flex flex-row justify-center  w-3/4 flex-wrap mt-16 md:text-2xl lg:text-3xl;
+}
+.selected-game {
+  @apply hover:animate-pulse cursor-pointer;
+}
+
+.h1 {
+  @apply mt-16 text-4xl md:text-5xl lg:text-6xl;
+}
+.h2 {
+  @apply text-2xl  md:text-3xl lg:text-4xl text-secondary my-4;
+}
+
+.link-to-game {
+  @apply flex flex-col items-center;
+}
+.game-img {
+  @apply object-contain h-28 w-auto mt-4 md:h-32  lg:h-48 xl:h-72 xl:w-auto;
+}
