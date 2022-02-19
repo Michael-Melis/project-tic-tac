@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import computerPic from "../images/computer.png";
-import friendsPic from "../images/friends.png";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import computerPic from '../images/computer.png';
+import friendsPic from '../images/friends.png';
 
 const LandingPage = () => {
   return (

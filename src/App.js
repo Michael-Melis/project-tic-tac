@@ -1,9 +1,9 @@
-import { useState } from "react";
-import LandingPage from "./pages/landingPage";
-import { Route, Routes } from "react-router-dom";
-import Singleplayer from "./pages/singleplayer";
-import Multyplayer from "./pages/multyplayer";
-import Layout from "./components/Layout";
+import { useState } from 'react';
+import LandingPage from './pages/landingPage';
+import { Route, Routes } from 'react-router-dom';
+import Singleplayer from './pages/singleplayer';
+import Multyplayer from './pages/multyplayer';
+import Layout from './components/Layout';
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);

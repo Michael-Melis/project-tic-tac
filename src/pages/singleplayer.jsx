@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Board from "../components/multyplayer/Board";
-import Square from "../components/multyplayer/Square";
+import React, { useEffect, useState } from 'react';
+import Board from '../components/multyplayer/Board';
+import Square from '../components/multyplayer/Square';
 
 const defaultSquares = () => new Array(9).fill(null);
 
@@ -24,13 +24,17 @@ const Singleplayer = () => {
     const emptyBoxes = allSquares
       .map((square, i) => (square === null ? i : null))
       .filter((val) => val !== null);
+
     setTimeout(() => {
       if (emptyBoxes.length > 0) {
+        //zbytocna podmienka
         if (emptyBoxes.length > 0) {
           const exactLines = (a, b, c) => {
             return winningLines.filter((boxIndexes) => {
               const boxValues = boxIndexes.map((index) => allSquares[index]);
+
               return (
+                //tricky part, comparing arrays aby sa matchovali obe polia
                 JSON.stringify([a, b, c].sort()) ===
                 JSON.stringify(boxValues.sort())
               );
@@ -39,27 +43,25 @@ const Singleplayer = () => {
 
           const aiMove = (index) => {
             let newAllSquares = allSquares;
-            newAllSquares[index] = "o";
+            newAllSquares[index] = 'o';
             setAllSquares([...newAllSquares]);
           };
 
-          const personWon = exactLines("x", "x", "x").length > 0;
+          const personWon = exactLines('x', 'x', 'x').length > 0;
           if (personWon) {
-            setWinner("x");
-
-            console.log(winner);
+            setWinner('x');
           }
-          const aiWon = exactLines("o", "o", "o").length > 0;
+
+          const aiWon = exactLines('o', 'o', 'o').length > 0;
           if (aiWon) {
-            setWinner("o");
-            console.log(winner);
+            setWinner('o');
           }
           //AI moves
           const isAiTurn =
             allSquares.filter((square) => square !== null).length % 2 === 1;
 
           if (isAiTurn) {
-            const aiWinningBox = exactLines("o", "o", null);
+            const aiWinningBox = exactLines('o', 'o', null);
             //AI winning box
             if (aiWinningBox.length > 0) {
               const winningBlock = aiWinningBox[0].filter(
@@ -70,7 +72,7 @@ const Singleplayer = () => {
             }
 
             //blocking person to win
-            const aiBlock = exactLines("x", "x", null);
+            const aiBlock = exactLines('x', 'x', null);
             if (aiBlock.length > 0) {
               const blockBox = aiBlock[0].filter(
                 (index) => allSquares[index] === null
@@ -79,7 +81,7 @@ const Singleplayer = () => {
               return;
             }
             //making next move smarter-closer to hit the winnin line
-            const nextAiMove = exactLines("o", null, null);
+            const nextAiMove = exactLines('o', null, null);
             if (nextAiMove.length > 0) {
               aiMove(
                 nextAiMove[0].filter((index) => allSquares[index] === null)[0]
@@ -93,7 +95,7 @@ const Singleplayer = () => {
           }
         }
       } else {
-        setWinner("tie");
+        setWinner('tie');
       }
     }, 300);
   }, [allSquares]);
@@ -104,7 +106,7 @@ const Singleplayer = () => {
       allSquares.filter((square) => square !== null).length % 2 === 0;
     if (isPersonTurn) {
       let newAllSquares = allSquares;
-      newAllSquares[i] = "x";
+      newAllSquares[i] = 'x';
       setAllSquares([...newAllSquares]);
     }
   };
@@ -117,15 +119,15 @@ const Singleplayer = () => {
   return (
     <>
       <h1 className="player-msg text-secondary">
-        Start by choosing empty box, you will represent X{" "}
+        Start by choosing empty box, you will represent X{' '}
       </h1>
       <Board>
         {allSquares.map((square, i) => (
           <Square
             key={i}
             onClick={() => handleClickOnSquare(i)}
-            x={square === "x" ? 1 : 0}
-            o={square === "o" ? 1 : 0}
+            x={square === 'x' ? 1 : 0}
+            o={square === 'o' ? 1 : 0}
           />
         ))}
       </Board>
@@ -133,13 +135,13 @@ const Singleplayer = () => {
         <button className="reset-btn" onClick={handleResetBoard}>
           RESET
         </button>
-        {!!winner && winner === "x" && (
+        {!!winner && winner === 'x' && (
           <div className="winner bg-secondary">You WON!</div>
         )}
-        {!!winner && winner === "o" && (
+        {!!winner && winner === 'o' && (
           <div className="winner bg-red-500">You LOST!</div>
         )}
-        {!!winner && winner === "tie" && (
+        {!!winner && winner === 'tie' && (
           <div className="bg-amber-600 winner">It is a tie!</div>
         )}
       </div>

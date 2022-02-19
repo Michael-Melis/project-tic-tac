@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const DropDown = ({ isOpen, toggle }) => {
   return (
     <div
       className={
         isOpen
-          ? "flex flex-col items-center text-secondary bg-navbar translate-x-0 transition-all duration-300 ease-in-out text-xl rounded-b-lg py-8 "
-          : "hidden"
+          ? 'flex flex-col items-center text-secondary bg-navbar translate-x-0 transition-all duration-300 ease-in-out text-xl rounded-b-lg py-8 '
+          : 'hidden'
       }
       onClick={toggle}
     >

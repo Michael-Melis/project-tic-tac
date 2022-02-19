@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import Square from "../components/multyplayer/Square";
-import Board from "./../components/multyplayer/Board";
+import React, { useState, useEffect } from 'react';
+import Square from '../components/multyplayer/Square';
+import Board from './../components/multyplayer/Board';
 
 const defaultSquares = () => new Array(9).fill(null);
 
 const Multyplayer = () => {
   const [allSquares, setAllSquares] = useState(defaultSquares());
   const [winner, setWinner] = useState(null);
-  const [isPlaying, setIsPlaying] = useState("x");
+  const [isPlaying, setIsPlaying] = useState(true); //musi byt boolean teda true
 
   const winningLines = [
     [0, 1, 2],
@@ -28,13 +28,14 @@ const Multyplayer = () => {
         );
       });
     };
-    const xWon = exactLines("x", "x", "x").length > 0;
+    const xWon = exactLines('x', 'x', 'x').length > 0;
     if (xWon) {
-      setWinner("x");
+      setWinner('x');
+      console.log(!!winner, winner);
     }
-    const oWon = exactLines("o", "o", "o").length > 0;
+    const oWon = exactLines('o', 'o', 'o').length > 0;
     if (oWon) {
-      setWinner("o");
+      setWinner('o');
     }
   }, [allSquares]);
 
@@ -45,16 +46,17 @@ const Multyplayer = () => {
       allSquares.filter((square) => square !== null).length % 2 === 1;
     if (isFirstPersonTurn) {
       let newAllSquares = allSquares;
-      newAllSquares[i] = "x";
+      newAllSquares[i] = 'x';
       setAllSquares([...newAllSquares]);
       setIsPlaying(!isPlaying);
     } else if (isSecondPersonTurn) {
       let newAllSquares = allSquares;
-      newAllSquares[i] = "o";
+      newAllSquares[i] = 'o';
       setAllSquares([...newAllSquares]);
       setIsPlaying(!isPlaying);
     }
   };
+
   const handleResetBoard = () => {
     setAllSquares(defaultSquares);
     setWinner(null);
@@ -76,8 +78,8 @@ const Multyplayer = () => {
           <Square
             key={i}
             onClick={() => handleClickByPlayer(i)}
-            x={square === "x" ? 1 : 0}
-            o={square === "o" ? 1 : 0}
+            x={square === 'x' ? 1 : 0}
+            o={square === 'o' ? 1 : 0}
             isPlaying={isPlaying}
           />
         ))}
@@ -86,13 +88,14 @@ const Multyplayer = () => {
         <button className="reset-btn" onClick={handleResetBoard}>
           RESET
         </button>
-        {!!winner && winner === "x" && (
+        {/* Basically, !! make us sure, the value we get is boolean, not falsy, truthy or string etc... */}
+        {!!winner && winner === 'x' && (
           <div className="winner bg-blue-600">Player with X WON!</div>
         )}
-        {!!winner && winner === "o" && (
+        {!!winner && winner === 'o' && (
           <div className="winner bg-secondary">Player with O WON!</div>
         )}
-        {!!winner && winner === "tie" && (
+        {!!winner && winner === 'tie' && (
           <div className="bg-amber-600 winner">It is a tie!</div>
         )}
       </div>

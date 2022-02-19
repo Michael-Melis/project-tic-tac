@@ -1,9 +1,9 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faInstagramSquare } from "@fortawesome/free-brands-svg-icons";
-import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
 
 const Footer = () => {
   return (
