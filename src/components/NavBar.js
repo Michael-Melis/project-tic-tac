@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar = ({ toggle }) => {
   return (
-    <nav
-      className="flex justify-between items-center h-16 bg-navbar text-white font-mono relative "
-      role="navigation"
-    >
+    <nav className="flex justify-between items-center h-16 bg-navbar text-white font-mono relative " role="navigation">
       <Link
         to="/"
         className="pl-8 font-extrabold tracking-widest  hover:underline transition-all duration-300 ease-in-out text-secondary "
@@ -21,12 +18,7 @@ const NavBar = ({ toggle }) => {
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </div>
       <div className="pr-8 md:block hidden">

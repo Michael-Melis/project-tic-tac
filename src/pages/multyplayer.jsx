@@ -23,9 +23,7 @@ const Multyplayer = () => {
     const exactLines = (a, b, c) => {
       return winningLines.filter((boxIndexes) => {
         const boxValues = boxIndexes.map((index) => allSquares[index]);
-        return (
-          JSON.stringify([a, b, c].sort()) === JSON.stringify(boxValues.sort())
-        );
+        return JSON.stringify([a, b, c].sort()) === JSON.stringify(boxValues.sort());
       });
     };
     const xWon = exactLines('x', 'x', 'x').length > 0;
@@ -40,10 +38,8 @@ const Multyplayer = () => {
   }, [allSquares]);
 
   const handleClickByPlayer = (i) => {
-    const isFirstPersonTurn =
-      allSquares.filter((square) => square !== null).length % 2 === 0;
-    const isSecondPersonTurn =
-      allSquares.filter((square) => square !== null).length % 2 === 1;
+    const isFirstPersonTurn = allSquares.filter((square) => square !== null).length % 2 === 0;
+    const isSecondPersonTurn = allSquares.filter((square) => square !== null).length % 2 === 1;
     if (isFirstPersonTurn) {
       let newAllSquares = allSquares;
       newAllSquares[i] = 'x';
@@ -65,13 +61,9 @@ const Multyplayer = () => {
   return (
     <>
       {isPlaying ? (
-        <h1 className="player-msg text-blue-600">
-          Wainting for move by player representing X
-        </h1>
+        <h1 className="player-msg text-blue-600">Wainting for move by player representing X</h1>
       ) : (
-        <h1 className="player-msg text-secondary">
-          Wainting for move by player representing O
-        </h1>
+        <h1 className="player-msg text-secondary">Wainting for move by player representing O</h1>
       )}
       <Board>
         {allSquares.map((square, i) => (
@@ -89,15 +81,9 @@ const Multyplayer = () => {
           RESET
         </button>
         {/* Basically, !! make us sure, the value we get is boolean, not falsy, truthy or string etc... */}
-        {!!winner && winner === 'x' && (
-          <div className="winner bg-blue-600">Player with X WON!</div>
-        )}
-        {!!winner && winner === 'o' && (
-          <div className="winner bg-secondary">Player with O WON!</div>
-        )}
-        {!!winner && winner === 'tie' && (
-          <div className="bg-amber-600 winner">It is a tie!</div>
-        )}
+        {!!winner && winner === 'x' && <div className="winner bg-blue-600">Player with X WON!</div>}
+        {!!winner && winner === 'o' && <div className="winner bg-secondary">Player with O WON!</div>}
+        {!!winner && winner === 'tie' && <div className="bg-amber-600 winner">It is a tie!</div>}
       </div>
     </>
   );

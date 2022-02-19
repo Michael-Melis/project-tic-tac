@@ -21,9 +21,7 @@ const Singleplayer = () => {
 
   useEffect(() => {
     //all possible option to pick
-    const emptyBoxes = allSquares
-      .map((square, i) => (square === null ? i : null))
-      .filter((val) => val !== null);
+    const emptyBoxes = allSquares.map((square, i) => (square === null ? i : null)).filter((val) => val !== null);
 
     setTimeout(() => {
       if (emptyBoxes.length > 0) {
@@ -35,8 +33,7 @@ const Singleplayer = () => {
 
               return (
                 //tricky part, comparing arrays aby sa matchovali obe polia
-                JSON.stringify([a, b, c].sort()) ===
-                JSON.stringify(boxValues.sort())
+                JSON.stringify([a, b, c].sort()) === JSON.stringify(boxValues.sort())
               );
             });
           };
@@ -57,16 +54,13 @@ const Singleplayer = () => {
             setWinner('o');
           }
           //AI moves
-          const isAiTurn =
-            allSquares.filter((square) => square !== null).length % 2 === 1;
+          const isAiTurn = allSquares.filter((square) => square !== null).length % 2 === 1;
 
           if (isAiTurn) {
             const aiWinningBox = exactLines('o', 'o', null);
             //AI winning box
             if (aiWinningBox.length > 0) {
-              const winningBlock = aiWinningBox[0].filter(
-                (index) => allSquares[index] === null
-              )[0];
+              const winningBlock = aiWinningBox[0].filter((index) => allSquares[index] === null)[0];
               aiMove(winningBlock);
               return;
             }
@@ -74,23 +68,18 @@ const Singleplayer = () => {
             //blocking person to win
             const aiBlock = exactLines('x', 'x', null);
             if (aiBlock.length > 0) {
-              const blockBox = aiBlock[0].filter(
-                (index) => allSquares[index] === null
-              )[0];
+              const blockBox = aiBlock[0].filter((index) => allSquares[index] === null)[0];
               aiMove(blockBox);
               return;
             }
             //making next move smarter-closer to hit the winnin line
             const nextAiMove = exactLines('o', null, null);
             if (nextAiMove.length > 0) {
-              aiMove(
-                nextAiMove[0].filter((index) => allSquares[index] === null)[0]
-              );
+              aiMove(nextAiMove[0].filter((index) => allSquares[index] === null)[0]);
               return;
             }
 
-            const randomIndex =
-              emptyBoxes[Math.ceil(Math.random() * emptyBoxes.length)];
+            const randomIndex = emptyBoxes[Math.ceil(Math.random() * emptyBoxes.length)];
             aiMove(randomIndex);
           }
         }
@@ -102,8 +91,7 @@ const Singleplayer = () => {
 
   //player moves
   const handleClickOnSquare = (i) => {
-    const isPersonTurn =
-      allSquares.filter((square) => square !== null).length % 2 === 0;
+    const isPersonTurn = allSquares.filter((square) => square !== null).length % 2 === 0;
     if (isPersonTurn) {
       let newAllSquares = allSquares;
       newAllSquares[i] = 'x';
@@ -118,9 +106,7 @@ const Singleplayer = () => {
 
   return (
     <>
-      <h1 className="player-msg text-secondary">
-        Start by choosing empty box, you will represent X{' '}
-      </h1>
+      <h1 className="player-msg text-secondary">Start by choosing empty box, you will represent X </h1>
       <Board>
         {allSquares.map((square, i) => (
           <Square
@@ -135,15 +121,9 @@ const Singleplayer = () => {
         <button className="reset-btn" onClick={handleResetBoard}>
           RESET
         </button>
-        {!!winner && winner === 'x' && (
-          <div className="winner bg-secondary">You WON!</div>
-        )}
-        {!!winner && winner === 'o' && (
-          <div className="winner bg-red-500">You LOST!</div>
-        )}
-        {!!winner && winner === 'tie' && (
-          <div className="bg-amber-600 winner">It is a tie!</div>
-        )}
+        {!!winner && winner === 'x' && <div className="winner bg-secondary">You WON!</div>}
+        {!!winner && winner === 'o' && <div className="winner bg-red-500">You LOST!</div>}
+        {!!winner && winner === 'tie' && <div className="bg-amber-600 winner">It is a tie!</div>}
       </div>
     </>
   );

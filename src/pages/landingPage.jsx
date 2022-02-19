@@ -12,11 +12,7 @@ const LandingPage = () => {
         <div className=" selected-game">
           <Link to="/singleplayer" className="link-to-game ">
             Try to beat the Computer/JS
-            <img
-              src={computerPic}
-              alt="man kicking computer"
-              className="game-img"
-            />
+            <img src={computerPic} alt="man kicking computer" className="game-img" />
           </Link>
         </div>
         <div className="selected-game ">
